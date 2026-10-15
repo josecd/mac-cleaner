@@ -24,5 +24,7 @@ struct MacCleanerApp: App {
 final class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationDidFinishLaunching(_ notification: Notification) {
         NSApp.setActivationPolicy(.regular)
+        // Iniciar el monitor de apps en la papelera en tiempo real
+        _ = TrashWatcherService.shared
     }
 }

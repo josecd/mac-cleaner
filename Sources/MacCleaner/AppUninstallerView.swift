@@ -34,13 +34,31 @@ public struct AppUninstallerView: View {
                         .foregroundColor(.secondary)
                 }
                 Spacer()
-                PrimaryGradientButton(
-                    title: "Recargar",
-                    icon: "arrow.clockwise",
-                    isLoading: uninstaller.isScanning
-                ) {
-                    Task {
-                        await uninstaller.scanApps()
+                HStack(spacing: 8) {
+                    Button(action: {
+                        TrashWatcherService.shared.simulateTrashDetection(appName: "WinZip.app")
+                    }) {
+                        HStack(spacing: 5) {
+                            Image(systemName: "trash.circle.fill")
+                                .foregroundColor(Color(red: 0.76, green: 0.24, blue: 0.62))
+                            Text("Probar aviso")
+                                .font(.system(size: 12, weight: .medium))
+                        }
+                        .padding(.horizontal, 10)
+                        .padding(.vertical, 7)
+                        .background(Color.white.opacity(0.08))
+                        .cornerRadius(8)
+                    }
+                    .buttonStyle(.plain)
+                    
+                    PrimaryGradientButton(
+                        title: "Recargar",
+                        icon: "arrow.clockwise",
+                        isLoading: uninstaller.isScanning
+                    ) {
+                        Task {
+                            await uninstaller.scanApps()
+                        }
                     }
                 }
             }

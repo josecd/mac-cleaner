@@ -4,6 +4,7 @@ public struct MenuBarView: View {
     @ObservedObject var monitor = SystemMonitor.shared
     @ObservedObject var junkService = JunkCleanerService.shared
     @ObservedObject var processMonitor = ProcessMonitorService.shared
+    @ObservedObject var trashWatcher = TrashWatcherService.shared
     @Environment(\.openWindow) private var openWindow
     
     @State private var isFreeingDisk: Bool = false
@@ -43,6 +44,59 @@ public struct MenuBarView: View {
             .padding(.horizontal, 16)
             .padding(.top, 14)
             
+            // Alerta si hay una app en la papelera
+            if let alert = trashWatcher.currentAlert {
+                VStack(alignment: .leading, spacing: 8) {
+                    HStack(spacing: 8) {
+                        Image(nsImage: alert.icon)
+                            .resizable()
+                            .frame(width: 24, height: 24)
+                        VStack(alignment: .leading, spacing: 1) {
+                            Text("Desinstalar correctamente")
+                                .font(.system(size: 12, weight: .bold))
+                                .foregroundColor(.white)
+                            Text(alert.name)
+                                .font(.system(size: 11))
+                                .foregroundColor(.white.opacity(0.8))
+                        }
+                        Spacer()
+                    }
+                    HStack(spacing: 8) {
+                        Button("Ignorar") {
+                            trashWatcher.ignoreAlert()
+                        }
+                        .font(.system(size: 11, weight: .medium))
+                        .padding(.horizontal, 8)
+                        .padding(.vertical, 4)
+                        .background(Color.white.opacity(0.15))
+                        .cornerRadius(6)
+                        .buttonStyle(.plain)
+                        
+                        Button("Desinstalar...") {
+                            Task {
+                                await trashWatcher.uninstallWithLeftovers()
+                            }
+                        }
+                        .font(.system(size: 11, weight: .bold))
+                        .padding(.horizontal, 10)
+                        .padding(.vertical, 4)
+                        .background(Color(red: 0.76, green: 0.24, blue: 0.62))
+                        .cornerRadius(6)
+                        .buttonStyle(.plain)
+                    }
+                }
+                .padding(10)
+                .background(
+                    RoundedRectangle(cornerRadius: 10)
+                        .fill(Color(red: 0.76, green: 0.24, blue: 0.62).opacity(0.25))
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 10)
+                                .stroke(Color(red: 0.76, green: 0.24, blue: 0.62).opacity(0.6), lineWidth: 1)
+                        )
+                )
+                .padding(.horizontal, 16)
+            }
+
             // 2. Shield Banner (Protection)
             VStack(alignment: .leading, spacing: 6) {
                 HStack {
