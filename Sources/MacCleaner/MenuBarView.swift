@@ -53,7 +53,7 @@ public struct MenuBarView: View {
                         Text("Protegido por")
                             .font(.system(size: 12, weight: .bold))
                             .foregroundColor(.white)
-                        Text("MacCleaner")
+                        Text("Zafiro Clean")
                             .font(.system(size: 12, weight: .heavy))
                             .foregroundColor(.white)
                     }
@@ -321,7 +321,7 @@ public struct MenuBarView: View {
                 
                 Spacer()
                 
-                Button("Mostrar MacCleaner") {
+                Button("Abrir Zafiro Clean") {
                     NSApp.activate(ignoringOtherApps: true)
                     openWindow(id: "main-window")
                 }

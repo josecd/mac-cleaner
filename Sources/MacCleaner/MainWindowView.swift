@@ -35,7 +35,7 @@ public struct MainWindowView: View {
                         RoundedRectangle(cornerRadius: 10, style: .continuous)
                             .fill(
                                 LinearGradient(
-                                    colors: [.purple, .indigo],
+                                    colors: [Color(red: 0.15, green: 0.45, blue: 1.0), Color(red: 0.05, green: 0.15, blue: 0.75)],
                                     startPoint: .topLeading,
                                     endPoint: .bottomTrailing
                                 )
@@ -46,10 +46,10 @@ public struct MainWindowView: View {
                             .foregroundColor(.white)
                     }
                     VStack(alignment: .leading, spacing: 1) {
-                        Text("MacCleaner")
+                        Text("Zafiro Clean")
                             .font(.headline)
                             .fontWeight(.bold)
-                        Text("Optimización Nativa")
+                        Text("Elegancia y Rendimiento")
                             .font(.caption2)
                             .foregroundColor(.secondary)
                     }

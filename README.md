@@ -1,21 +1,21 @@
-# MacCleaner 🚀
+# Zafiro Clean 💎
 
-**MacCleaner** es una utilidad nativa para macOS desarrollada en **Swift** y **SwiftUI**, diseñada para mantener tu Mac rápida, limpia y optimizada mediante una interfaz moderna con efectos de glassmorphism y un compañero en la barra de menú.
+**Zafiro Clean** es una suite de optimización y utilidad nativa para macOS desarrollada en **Swift** y **SwiftUI**. Diseñada con un enfoque de alto rendimiento, estética de cristal (*glassmorphism*) inspirada en la pureza y brillo del zafiro, y un compañero integrado en la barra de menú.
 
 ---
 
 ## ✨ Características Principales
 
-- **Smart Care**: Análisis integral con un solo clic que revisa archivos innecesarios, memoria y rendimiento.
-- **Limpiador del Sistema**: Escaneo seguro y detallado de cachés de usuario, cachés de Xcode (`DerivedData`), dependencias de desarrollo (`.npm`, etc.) y registros del sistema.
+- **Cuidado Inteligente (Smart Care)**: Análisis integral con un solo clic que revisa archivos innecesarios, memoria y rendimiento general.
+- **Archivos Basura**: Escaneo seguro y detallado de cachés de usuario, cachés de desarrollo (`DerivedData`, `.npm`) y registros temporales.
 - **Desinstalador Inteligente**: Detecta aplicaciones instaladas en `/Applications` y localiza residuos huérfanos en `~/Library` (Application Support, Caches, Preferences, Saved Application State).
-- **Archivos Grandes y Antiguos**: Localización rápida de descargas, archivos de video, archivos comprimidos e imágenes de disco que ocupan espacio crítico.
+- **Archivos Grandes y Antiguos**: Localización rápida de descargas, videos y archivos comprimidos de gran tamaño con filtros por categoría.
 - **Monitor del Sistema**: 
   - Monitoreo en tiempo real de CPU y temperaturas.
-  - Consumo de memoria RAM (activa, inactiva, wired y libre).
+  - Consumo y distribución de memoria RAM.
   - Estado del almacenamiento interno y disco.
-  - Lista de procesos pesados con opción para finalizar tareas rápidamente.
-- **Compañero en Menu Bar**: Acceso rápido desde la barra de menú con tarjetas informativas de batería, estado de Wi-Fi, dispositivos Bluetooth conectados, disco y memoria.
+  - Lista de procesos pesados con opción de finalización rápida.
+- **Compañero en Menu Bar**: Tarjetas informativas de batería, estado de Wi-Fi, dispositivos Bluetooth conectados, disco y memoria en tiempo real.
 - **Arranque Automático**: Integración opcional mediante `LaunchAgent` para iniciar junto con el sistema.
 
 ---
@@ -30,16 +30,12 @@
 
 ## 🚀 Compilación e Instalación
 
-### Requisitos
-- Xcode Command Line Tools (`xcode-select --install`)
-- macOS 13+
-
 ### Compilación rápida
 ```bash
 ./build.sh
 ```
 
-El script compila en modo release y genera la aplicación en `MacCleaner.app`.
+El script compila en modo release, genera los íconos oficiales de Zafiro y empaqueta la aplicación en `MacCleaner.app`.
 
 ---
 
